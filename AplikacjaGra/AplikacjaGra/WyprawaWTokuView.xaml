@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="AplikacjaGra.WyprawaWTokuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AplikacjaGra"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+            <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="5" Margin="10" Padding="10" Background="#222222">
+        <StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Nazwa}" FontSize="16" FontWeight="Bold" Foreground="Gold" Margin="0,0,0,5"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="Czas do konca wyprawy: " Foreground="White"/>
+            <TextBlock Text="{Binding CzasDoZakonczenia}" x:Name="CzasWyp" Foreground="White"/>
+                </StackPanel>
+                <ProgressBar Height="20" Width="400" Minimum="0" Maximum="100" Value="{Binding ProcentUkonczenia, Mode=OneWay}" x:Name="CzasBar"/>
+            </StackPanel>
+            </Border>
+            
+    </Grid>
+</UserControl>

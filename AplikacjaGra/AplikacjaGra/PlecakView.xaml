@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="AplikacjaGra.PlecakView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Plecak" FontWeight="Bold" FontSize="16" Margin="10,10,0,10" HorizontalAlignment="Center"/>
+            <UniformGrid x:Name="Itemy" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        </StackPanel>
+    </Grid>
+</UserControl>

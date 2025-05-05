@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="AplikacjaGra.MenadzerPostaciView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AplikacjaGra"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+    <ContentControl x:Name="MenadzerPostaciContent">
+        <Grid Background="#e0e0e0">
+            <TextBlock Text="Wybierz swoją postać" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,40,0,0" FontSize="20" FontWeight="Bold" Foreground="#2D2D2D"/>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20">
+                    <ItemsControl x:Name="ListaPostaci" Margin="0">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel HorizontalAlignment="Left"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10" MaxWidth="180" Width="Auto" Height="220">
+                                    <Border BorderBrush="#CCCCCC" BorderThickness="2" CornerRadius="10" Background="#f8f8f8" MouseLeftButtonUp="Graj_Click" Tag="{Binding}" Cursor="Hand">
+                                        <StackPanel Margin="10">
+                                            <Image Source="{Binding SciezkaDoObrazka, Converter={StaticResource SciezkaDoObrazkaConverter}}" Width="120" Height="120" Stretch="Fill" Margin="0,5,0,0"/>
+                                            <TextBlock Text="{Binding Imie}" FontWeight="Bold" HorizontalAlignment="Center" Margin="5" Foreground="#333333"/>
+                                            <TextBlock Text="{Binding Klasa}" HorizontalAlignment="Center" Foreground="#666666"/>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <TextBlock Text="Poziom: " Foreground="#999999"/>
+                                                <TextBlock Text="{Binding Poziom}" Foreground="#999999"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                    <Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Top" Click="UsunPostacZListy_Click" Tag="{Binding}" Background="Red" Foreground="White" FontSize="10" Cursor="Hand">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid>
+                                                    <Rectangle Fill="#ff2a2a" Width="15" Height="15" RadiusY="7" RadiusX="7" Cursor="Hand" Margin="2"/>
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <Button Margin="10" FontSize="48" Content="+" Click="NowaPostac_Click" Foreground="White" BorderBrush="#4CAF50" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Rectangle Fill="#4CAF50" Width="140" Height="220" RadiusY="5" RadiusX="5" Cursor="Hand" Margin="2"/>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </WrapPanel>
+            </ScrollViewer>
+        </Grid>
+    </ContentControl>
+</UserControl>

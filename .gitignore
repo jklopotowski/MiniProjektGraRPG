@@ -1,0 +1,14 @@
+# Ignore build results
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+*.pdb
+*.db
+*.db-shm
+*.db-wal
+
+# Ignore VS folders
+.vs/

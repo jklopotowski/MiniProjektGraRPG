@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="AplikacjaGra.ProfilView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AplikacjaGra"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid Background="#f0f0f0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"  Background="White" Margin="10,10,0,10">
+            <Image Source="{Binding SciezkaDoObrazka, Converter={StaticResource SciezkaDoObrazkaConverter}}" Width="200" Height="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0,20,0,10"/>
+                <TextBlock Text="{Binding Imie}" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
+                <TextBlock Text="{Binding Klasa}" FontSize="14" Foreground="Gray" TextAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                    <TextBlock Text="Poziom:" FontSize="12" TextAlignment="Center"/>
+                    <TextBlock Text="{Binding Poziom}" FontSize="12" TextAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                    <TextBlock FontSize="12" TextAlignment="Center" x:Name="XPText"/>
+                    <TextBlock Text="XP" FontSize="12" TextAlignment="Center"/>
+                </StackPanel>
+                <ProgressBar Value="{Binding XP}" Maximum="{Binding PotrzebneXPDoPoziomu}" Height="10" Margin="5,0,5,0" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <TextBlock Text="Główna cecha: " FontSize="12" TextAlignment="Center"/>
+                <TextBlock Text="{Binding GlownaCecha}" FontSize="12" TextAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="0" Background="White" Margin="10,10,0,10" Grid.RowSpan="2">
+            <TextBlock Text="Statystyki postaci" FontSize="16" FontWeight="Bold" Margin="10,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <ItemsControl Padding="10,10,0,20" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <ItemsControl.Items>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Siła: " Width="100"/>
+                        <StackPanel>
+                            <TextBlock Text="{Binding StatystykiCalkowite.Sila}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding BazoweStatystyki.Sila, StringFormat=↳ bazowe: {0}}" FontSize="10" Foreground="Gray"/>
+                        </StackPanel>
+                        <Button Content="+" Click="Sila_Click" Margin="10,0" Width="30" x:Name="SilaBtn"
+                                ToolTip="{Binding BazoweStatystyki.SilaCena, StringFormat=Ulepsz za {0} złota}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Zręczność: " Width="100"/>
+                        <StackPanel>
+                            <TextBlock Text="{Binding StatystykiCalkowite.Zrecznosc}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding BazoweStatystyki.Zrecznosc, StringFormat=↳ bazowe: {0}}" FontSize="10" Foreground="Gray"/>
+                        </StackPanel>
+                        <Button Content="+" Click="Zrecznosc_Click" Margin="10,0" Width="30" x:Name="ZrecznoscBtn"
+                                ToolTip="{Binding BazoweStatystyki.ZrecznoscCena, StringFormat=Ulepsz za {0} złota}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Inteligencja: " Width="100"/>
+                        <StackPanel>
+                            <TextBlock Text="{Binding StatystykiCalkowite.Inteligencja}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding BazoweStatystyki.Inteligencja, StringFormat=↳ bazowe: {0}}" FontSize="10" Foreground="Gray"/>
+                        </StackPanel>
+                        <Button Content="+" Click="Inteligencja_Click" Margin="10,0" Width="30" x:Name="InteligencjaBtn"
+                                ToolTip="{Binding BazoweStatystyki.InteligencjaCena, StringFormat=Ulepsz za {0} złota}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Wytrzymałość: " Width="100"/>
+                        <StackPanel>
+                            <TextBlock Text="{Binding StatystykiCalkowite.Wytrzymalosc}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding BazoweStatystyki.Wytrzymalosc, StringFormat=↳ bazowe: {0}}" FontSize="10" Foreground="Gray"/>
+                        </StackPanel>
+                        <Button Content="+" Click="Wytrzymalosc_Click" Margin="10,0" Width="30" x:Name="WytrzymaloscBtn"
+                                ToolTip="{Binding BazoweStatystyki.WytrzymaloscCena, StringFormat=Ulepsz za {0} złota}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Szczęście: " Width="100"/>
+                        <StackPanel>
+                            <TextBlock Text="{Binding StatystykiCalkowite.Szczescie}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding BazoweStatystyki.Szczescie, StringFormat=↳ bazowe: {0}}" FontSize="10" Foreground="Gray"/>
+                        </StackPanel>
+                        <Button Content="+" Click="Szczescie_Click" Margin="10,0" Width="30" x:Name="SzczescieBtn"
+                                ToolTip="{Binding BazoweStatystyki.SzczescieCena, StringFormat=Ulepsz za {0} złota}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Pancerz: " Width="100"/>
+                        <TextBlock Text="{Binding StatystykiCalkowite.Pancerz}" FontWeight="Bold"/>
+                    </StackPanel>
+                    <Line X1="-10" X2="200" Margin="0,20,0,10" Stroke="Black"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Zdrowie: " Width="100"/>
+                        <TextBlock Text="{Binding MaxZdrowie}" FontWeight="Bold"/>
+                        <TextBlock Text=" HP" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Obrazenia: " Width="100"/>
+                        <TextBlock Text="{Binding Obrazenia}" FontWeight="Bold"/>
+                        <TextBlock Text=" DMG/atak" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Szansa na kryt: " Width="100"/>
+                        <TextBlock Text="{Binding SzansaNaKrytProc}" FontWeight="Bold"/>
+                        <TextBlock Text=" %" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Redukcja obrażeń: " Width="100"/>
+                        <TextBlock Text="{Binding RedukcjaObrazenProc}" FontWeight="Bold"/>
+                        <TextBlock Text=" %" FontWeight="Bold"/>
+                    </StackPanel>
+                </ItemsControl.Items>
+            </ItemsControl>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="2" Grid.Row="0"  Background="White" Margin="10,10,10,0">
+            <ContentControl x:Name="Plecak"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="1" Background="White" Margin="10,10,10,10">
+            <ContentControl x:Name="Ekwipunek"/>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

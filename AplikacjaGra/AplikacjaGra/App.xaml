@@ -1,0 +1,9 @@
+﻿<Application x:Class="AplikacjaGra.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AplikacjaGra"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <local:SciezkaDoObrazkaConverter x:Key="SciezkaDoObrazkaConverter" />
+    </Application.Resources>
+</Application>
